@@ -26,11 +26,19 @@ def index(request):
 def index(request):
     all_albums = Album.objects.all()
 
-    context = {
-        'all_albums': all_albums
+    context = {'all_albums': all_albums }
 
-    }
     return render(request, 'music/index.html', context)
 
 def detail(request, album_id): # request is just the HTML request
-    return HttpResponse('<h2>details for album_id:' + str(album_id) + '</h2>')
+    #first query database to see if there is an album with the id requested
+
+
+
+    try:
+        album = Album.objects.get(id = album_id)
+        context = {'album': album }
+    except Album.DoesNotExist:
+        raise Http404("Sorry, but the album you requsted does not exist!")
+
+    return render(request, 'music/detail.html', context)

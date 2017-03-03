@@ -1,0 +1,13 @@
+<!-- album logo will go here -->
+<img src="{{ album.album_logo }}" alt="">
+<h1>{{ album.album_title }}</h1>
+<h3>{{ album.artist }}</h3>
+
+<!-- then have list of all songs in album -->
+
+<ul>
+    {% for song in album.song_set.all%}
+    <!--loop through all songs for that album and get all of them-->
+    <li>{{ song.song_title }} - {{ song.file_type }}</li>
+    {% endfor %}
+</ul>
