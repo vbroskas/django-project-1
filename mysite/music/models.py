@@ -18,6 +18,8 @@ class Song(models.Model):
     #on_delete=models.CASCADE makes it so whenever an album is deleted, all songs associated with that album are also deleted
     file_type = models.CharField(max_length=10)
     song_title = models.CharField(max_length=250)
+    #add in attribute to favorite songs
+    is_favorite = models.BooleanField(default = False)
 
     def __str__(self):
         return self.song_title #print out song title
