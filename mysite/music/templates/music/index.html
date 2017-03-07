@@ -1,14 +1,29 @@
+<!-- ADD Base Template -->
+{% extends 'music/base.html' %}
 
-<h1>list of all albums</h1> {% if all_albums %}
+
+{% block body %}
+
 
 <ul>
-    {% for album in all_albums %}
+    {% for album in object_list %} <!-- object_list is what is returned when you use ListView (in views) to query the database! -->
     <li>
-        <a href="{% url 'music:detail' album.id %}"> {{ album.album_title }}</a>
+
     </li>
     {% endfor %}
 </ul>
 
-{% else %}
+<div class="flex-container">
 
-<h2>No albums have been added yet!</h2> {% endif %}
+{% for album in all_albums %}
+<div class="flex-item">
+<a href="{% url 'music:detail' album.id %}">
+    <img src="{{ album.album_logo }}" class="album-img" alt="">
+    <h1>{{ album.album_title }}</h1>
+    <h3>{{ album.artist }}</h3>
+    </a>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

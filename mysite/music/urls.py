@@ -4,13 +4,14 @@ from . import views
 #ALWAYS NAMESPACE YOUR URL PATTERNS TO ASSOCIATE A URL WITH ITS SPECIFIC APP
 app_name = 'music'
 
+# each URL pattern must be hooked up to a view function
+# since we have classes in views.py, we have to reference the class then convert it to a view
 urlpatterns = [
     # /music/
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
 
     # /music/21
-    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
 
-    # /music/<album_id>/favorite/
-    url(r'^(?P<album_id>[0-9]+)/favorite/$', views.favorite, name='favorite')
+
 ]

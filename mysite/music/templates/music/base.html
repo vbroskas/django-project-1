@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>MUSIKA</title>
+        <title>{% block title %}MUSIKA{% endblock %}</title>
 
         {% load staticfiles %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -65,7 +65,9 @@
         </nav>
 
         <!-- add BLOCK for other components you want on ALL pages -->
-        {% block %}
+        {% block body %} <!-- body is the name of the block of code -->
+
+        {% endblock %}
 
     </body>
 </html>

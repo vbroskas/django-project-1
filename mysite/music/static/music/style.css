@@ -11,3 +11,22 @@ body {
     font-family: 'Shadows Into Light';
     font-size: 30px;
 }
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.flex-item{
+margin: 2rem;
+background: white;
+}
+
+
+.album-img{
+    width: 340px;
+    height: 225px;
+    margin: 1rem;
+}
