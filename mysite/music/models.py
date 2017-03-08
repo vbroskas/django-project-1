@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.urlresolvers import reverse # has to do with letting user add album via form and save to database
 # Create your models here.
 
 class Album(models.Model):
@@ -7,6 +7,10 @@ class Album(models.Model):
     album_title = models.CharField(max_length=500)
     genre = models.CharField(max_length=150)
     album_logo = models.CharField(max_length=1000) #for posting a link to an image
+
+    def get_absolute_url(self):
+        #return the details page for the album
+        return reverse('music:detail', kwargs={'pk': self.pk}) #params: view name, primary key
 
     def __str__(self):
         return self.album_title + ' - ' + self.artist  #when we make a call to see what is in the database, thsi will return a user friendly description

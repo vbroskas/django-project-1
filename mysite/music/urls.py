@@ -13,5 +13,8 @@ urlpatterns = [
     # /music/21
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
 
+    #need to assign a URL to the AlbumCreate viwe
+    #matches /music/album/add/    doesnt need a PK because it is just being made, it doesnt have one yet
+    url(r'album/add/$', views.AlbumCreate.as_view(), name='album-add'),
 
 ]

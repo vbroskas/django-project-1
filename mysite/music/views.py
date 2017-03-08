@@ -1,6 +1,7 @@
 # Using generic views
 
 from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView #whenever you want to make a form that will create a new object, you need this. UpdateView is for editing an object, DeleteView for deleting an object
 from .models import Album
 
 
@@ -28,3 +29,10 @@ class DetailView(generic.DetailView):
     model = Album
 
     template_name = 'music/detail.html'
+
+
+class AlbumCreate(CreateView):
+    #1) you are trying to create a new object, what kind of object is it?
+    model = Album
+    #2 what fields do you need in the form? ie what attributes do you want me to allow the user to fill out?
+    fields = ['artist', 'album_title', 'genre', 'album_logo']
